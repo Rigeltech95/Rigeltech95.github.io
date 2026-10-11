@@ -1,107 +1,1094 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#061326">
+  <meta name="description" content="Rigeltech95's Data Analyst Portfolio">
   <title>Rigeltech95 | Data Analyst Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+    :root {
+      --bg: #061326;
+      --bg-light: #0b1c33;
+      --card: #0a1a30;
+      --border: #173c5b;
+      --text: #eef5ff;
+      --muted: #a8bad0;
+      --teal: #00e5d4;
+      --blue: #229dff;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      color: #333;
-      line-height: 1.6;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
-    header {
-      background: #1e2a38;
-      color: #fff;
-      text-align: center;
-      padding: 2rem 0;
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-    section {
-      padding: 2rem 5%;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1, h2 {
-      color: #1e2a38;
-    }
-    .project {
-      background: #fff;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .project h3 {
-      margin-top: 0;
-    }
+
     a {
-      color: #007acc;
+      color: inherit;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* Navigation */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(6, 19, 38, .92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(34, 157, 255, .12);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .logo i {
+      color: var(--teal);
+      margin-right: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .9rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--teal);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      padding: 95px 0 90px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 85% 20%, rgba(34, 80, 190, .18), transparent 35%),
+        radial-gradient(ellipse at 0% 100%, rgba(0, 229, 212, .08), transparent 35%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 16px 0;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--teal);
+    }
+
+    .hero-description {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 25px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 28px 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: .9rem;
+      font-weight: 700;
+      border: 1px solid var(--teal);
+      transition: transform .2s, background .2s, box-shadow .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 229, 212, .12);
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #041326;
+    }
+
+    .btn-outline {
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 229, 212, .08);
+    }
+
+    .tool-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .tool-item {
+      color: var(--muted);
+      font-size: .78rem;
+      text-align: center;
+    }
+
+    .tool-item i {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--teal);
+      margin-bottom: 5px;
+    }
+
+    .hero-visual {
+      position: relative;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(145deg, #102744, #08172b);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, .25);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .visual-heading {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .chart {
+      height: 170px;
+      display: flex;
+      align-items: end;
+      justify-content: space-around;
+      gap: 13px;
+      padding: 12px 4px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bar {
+      flex: 1;
+      max-width: 48px;
+      min-height: 18px;
+      border-radius: 7px 7px 0 0;
+      background: linear-gradient(to top, #087eaf, var(--teal));
+      transform-origin: bottom;
+      animation: grow 1.2s ease-out both;
+    }
+
+    .bar:nth-child(1) { height: 35%; }
+    .bar:nth-child(2) { height: 50%; animation-delay: .1s; }
+    .bar:nth-child(3) { height: 42%; animation-delay: .2s; }
+    .bar:nth-child(4) { height: 70%; animation-delay: .3s; }
+    .bar:nth-child(5) { height: 62%; animation-delay: .4s; }
+    .bar:nth-child(6) { height: 92%; animation-delay: .5s; }
+
+    .chart-labels {
+      display: flex;
+      justify-content: space-around;
+      color: var(--muted);
+      font-size: .7rem;
+      margin-top: 10px;
+    }
+
+    .visual-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+      font-size: .82rem;
+    }
+
+    .visual-footer strong {
+      color: var(--teal);
+    }
+
+    /* General sections */
+
+    section.content-section {
+      padding: 85px 0;
+      scroll-margin-top: 70px;
+    }
+
+    .section-heading {
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      margin-top: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 650px;
+    }
+
+    .about-section {
+      background: var(--bg-light);
+      border-top: 1px solid rgba(34, 157, 255, .1);
+      border-bottom: 1px solid rgba(34, 157, 255, .1);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-copy h2 {
+      font-size: 2rem;
+      margin: 10px 0 18px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .quote-card {
+      padding: 35px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(145deg, #0c2340, #08172b);
+    }
+
+    .quote-card i {
+      color: var(--teal);
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .quote-card blockquote {
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .quote-card p {
+      color: var(--muted);
+      margin-top: 15px;
+      font-size: .9rem;
+    }
+
+    /* Project cards */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      background: linear-gradient(150deg, #0b1d34, #081629);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .project:hover {
+      transform: translateY(-7px);
+      border-color: var(--teal);
+      box-shadow: 0 15px 40px rgba(0, 229, 212, .07);
+    }
+
+    .project-art {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(0, 229, 212, .12), transparent 40%),
+        #0e2541;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-art i {
+      color: var(--teal);
+      font-size: 3.4rem;
+    }
+
+    .project-art .secondary-icon {
+      font-size: 2.3rem;
+      color: #65a9ff;
+    }
+
+    .project-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 22px;
+    }
+
+    .project-type {
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+
+    .project h3 {
+      font-size: 1.1rem;
+      line-height: 1.4;
+      margin: 8px 0 12px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-bottom: 15px;
+    }
+
+    .project .tools {
+      font-size: .8rem;
+      color: #d6e4f6;
+      margin-top: auto;
+      padding-top: 5px;
+    }
+
+    .project .btn {
+      align-self: flex-start;
+      margin-top: 18px;
+      font-size: .8rem;
+      padding: 9px 16px;
+    }
+
+    /* Skills */
+
+    .skills-section {
+      background: var(--bg-light);
+      border-top: 1px solid rgba(34, 157, 255, .1);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill {
+      padding: 24px 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: #0a1b30;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+      border-color: var(--teal);
+    }
+
+    .skill i {
+      font-size: 2rem;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .skill p {
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    /* Contact and footer */
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 30px;
+      padding: 35px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(120deg, #0d2541, #08172b);
+    }
+
+    .contact-panel h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-links a {
+      color: var(--teal);
+      font-size: .9rem;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 18px;
+      font-size: 1.1rem;
+    }
+
+    .socials a:hover {
+      color: var(--teal);
+    }
+
+    /* Motion */
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+
+    @keyframes grow {
+      from { transform: scaleY(.1); }
+      to { transform: scaleY(1); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .about-grid {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 5% 18px;
+        background: #08172b;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 0;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero-visual {
+        padding: 22px;
+      }
+
+      section.content-section {
+        padding: 60px 0;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-panel {
+        grid-template-columns: 1fr;
+        padding: 25px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Rigeltech95</h1>
-    <p>Data Analyst | Excel | SQL | Power BI | Tableau | Python</p>
-  </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hi, I’m a data analyst with a passion for turning raw data into meaningful insights. 
-    I work with tools like Excel, SQL, Power BI, and Python to analyze trends and support data-driven decision-making. 
-    I’ve also explored data science techniques through hands-on projects.</p>
-  </section>
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#home">
+        <i class="fa-solid fa-chart-simple"></i> Rigeltech95
+      </a>
 
-  <section id="projects">
-    <h2>Projects</h2>
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-    <div class="project">
-  <h3>Income Level Prediction – Data Science Capstone Project</h3>
-  <p>This project uses demographic and employment data to predict whether a person’s income 
-  exceeds $50K per year. I performed data cleaning, exploratory analysis, feature engineering, 
-  and model training using logistic regression and random forest classifiers.</p>
-  <p><strong>Tools:</strong> Python, Pandas, Scikit-learn, Matplotlib, Seaborn</p>
-
-  <!-- Link to HTML notebook -->
-  <a href="https://rigeltech95.github.io/income_level_prediction.html" target="_blank">
-    View Project
-  </a>
-  <br>
-</div>
-
-
-    <div class="project">
-      <h3>Bellabeat Smart Device Usage Analysis</h3>
-      <p>End-to-end data analytics project using MySQL and Tableau to analyze Fitbit smart device usage and provide marketing recommendations.</p>
-      <p><strong>Tools:</strong> MySQL, Tableau, Data Visualization</p>
-      <a href="https://rigeltech95.github.io/bellabeat-smart-device-analysis/" target="_blank">View Project</a>
+      <div class="nav-links" id="navLinks">
+        <a class="active" href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-    
-    
-    <div class="project">
-      <h3>Sales Performance Dashboard (Power BI)</h3>
-      <p>Designed an interactive dashboard to visualize regional sales, profit margins, and top-performing products. 
-      Enabled stakeholders to track KPIs and identify growth opportunities.</p>
-      <p><strong>Tools:</strong> Power BI, Excel, SQL</p>
-      <a href="https://github.com/Rigeltech95/sales-dashboard" target="_blank">View Project</a>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Hello, welcome to my portfolio</p>
+          <h1>Rigeltech95 <span>Data Analyst</span></h1>
+
+          <p class="hero-description">
+            I turn raw data into meaningful insights. I use Excel, SQL,
+            Power BI, Tableau, and Python to uncover trends, solve problems,
+            and support data-driven decisions.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">
+              Explore My Projects <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a class="btn btn-outline" href="#contact">
+              Get In Touch <i class="fa-regular fa-envelope"></i>
+            </a>
+          </div>
+
+          <div class="tool-row" aria-label="Core tools">
+            <div class="tool-item"><i class="fa-solid fa-file-excel"></i>Excel</div>
+            <div class="tool-item"><i class="fa-solid fa-database"></i>SQL</div>
+            <div class="tool-item"><i class="fa-solid fa-chart-column"></i>Power BI</div>
+            <div class="tool-item"><i class="fa-solid fa-chart-pie"></i>Tableau</div>
+            <div class="tool-item"><i class="fa-brands fa-python"></i>Python</div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Decorative analytics chart">
+          <p class="visual-heading">Turning data into better decisions</p>
+
+          <div class="chart" aria-hidden="true">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+
+          <div class="chart-labels">
+            <span>Jan</span><span>Feb</span><span>Mar</span>
+            <span>Apr</span><span>May</span><span>Jun</span>
+          </div>
+
+          <div class="visual-footer">
+            <span><i class="fa-solid fa-chart-line"></i> Data insights</span>
+            <strong>Analytics focused</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="content-section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <p class="eyebrow">A little about me</p>
+          <h2>Making data useful</h2>
+
+          <p>
+            Hi, I'm a data analyst with a passion for turning raw data
+            into meaningful insights. I enjoy exploring datasets,
+            identifying trends, building dashboards, and communicating
+            findings that support better decisions.
+          </p>
+
+          <p>
+            My work includes data cleaning, exploratory analysis,
+            visualization, reporting, and hands-on projects using
+            tools such as Excel, SQL, Power BI, Tableau, and Python.
+            I've also explored predictive modelling through a data
+            science capstone project.
+          </p>
+
+          <p>
+            I'm always learning, improving my analytical skills,
+            and looking for opportunities to solve practical problems with data.
+          </p>
+        </div>
+
+        <div class="quote-card reveal">
+          <i class="fa-solid fa-quote-left"></i>
+          <blockquote>
+            Data isn't just numbers. It's a story waiting to be understood.
+          </blockquote>
+          <p>My approach to data analytics</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="content-section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Selected work</p>
+          <h2>Featured Projects</h2>
+          <p>
+            A selection of analytics projects showcasing data exploration,
+            visualization, reporting, and predictive modelling.
+          </p>
+        </div>
+
+        <div class="project-grid">
+
+          <article class="project reveal">
+            <div class="project-art" aria-hidden="true">
+              <i class="fa-solid fa-chart-line"></i>
+              <i class="fa-solid fa-brain secondary-icon"></i>
+            </div>
+
+            <div class="project-body">
+              <span class="project-type">Capstone project</span>
+              <h3>Income Level Prediction</h3>
+
+              <p>
+                Explored demographic and employment data to investigate
+                income categories. The project covers data cleaning,
+                exploratory data analysis, feature engineering, and
+                classification modelling.
+              </p>
+
+              <p class="tools">
+                <strong>Tools:</strong> Python, Pandas, Scikit-learn,
+                Matplotlib, Seaborn
+              </p>
+
+              <a class="btn btn-outline"
+                 href="https://rigeltech95.github.io/income_level_prediction.html"
+                 target="_blank" rel="noopener noreferrer">
+                View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-art" aria-hidden="true">
+              <i class="fa-solid fa-heart-pulse"></i>
+              <i class="fa-solid fa-chart-column secondary-icon"></i>
+            </div>
+
+            <div class="project-body">
+              <span class="project-type">Data analytics</span>
+              <h3>Bellabeat Smart Device Usage Analysis</h3>
+
+              <p>
+                Analyzed Fitbit smart device usage data to identify
+                activity patterns and develop data-informed marketing
+                recommendations using MySQL and Tableau.
+              </p>
+
+              <p class="tools">
+                <strong>Tools:</strong> MySQL, Tableau, Data Visualization
+              </p>
+
+              <a class="btn btn-outline"
+                 href="https://rigeltech95.github.io/bellabeat-smart-device-analysis/"
+                 target="_blank" rel="noopener noreferrer">
+                View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-art" aria-hidden="true">
+              <i class="fa-solid fa-chart-column"></i>
+              <i class="fa-solid fa-gauge-high secondary-icon"></i>
+            </div>
+
+            <div class="project-body">
+              <span class="project-type">Business intelligence</span>
+              <h3>Sales Performance Dashboard</h3>
+
+              <p>
+                Designed a dashboard to explore regional sales,
+                profit margins, and top-performing products, helping
+                stakeholders monitor key performance indicators.
+              </p>
+
+              <p class="tools">
+                <strong>Tools:</strong> Power BI, Excel, SQL
+              </p>
+
+              <a class="btn btn-outline"
+                 href="https://github.com/Rigeltech95/sales-dashboard"
+                 target="_blank" rel="noopener noreferrer">
+                View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="content-section skills-section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">My toolkit</p>
+          <h2>Skills & Technologies</h2>
+          <p>Tools I use to explore data, build visualizations, and communicate findings.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill reveal">
+            <i class="fa-solid fa-file-excel"></i>
+            <p>Excel</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-solid fa-database"></i>
+            <p>SQL / MySQL</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-solid fa-chart-column"></i>
+            <p>Power BI</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-solid fa-chart-pie"></i>
+            <p>Tableau</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-brands fa-python"></i>
+            <p>Python</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-solid fa-table"></i>
+            <p>Pandas</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-solid fa-chart-area"></i>
+            <p>Data Visualization</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            <p>Exploratory Analysis</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-solid fa-broom"></i>
+            <p>Data Cleaning</p>
+          </div>
+
+          <div class="skill reveal">
+            <i class="fa-solid fa-lightbulb"></i>
+            <p>Business Insights</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="content-section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div>
+            <p class="eyebrow">Let's connect</p>
+            <h3>Have a project or opportunity in mind?</h3>
+            <p>
+              I'm open to connecting with people who value data,
+              collaboration, and continuous learning.
+            </p>
+
+            <div class="contact-links">
+              <a href="mailto:obiefunaprecious18@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                obiefunaprecious18@gmail.com
+              </a>
+
+              <a href="https://linkedin.com/in/obiefuna"
+                 target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                Connect on LinkedIn
+              </a>
+
+              <a href="https://github.com/Rigeltech95"
+                 target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <a class="btn btn-primary"
+             href="mailto:obiefunaprecious18@gmail.com">
+            Get In Touch <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Rigeltech95. All rights reserved.</p>
+
+      <div class="socials">
+        <a href="https://github.com/Rigeltech95"
+           aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://linkedin.com/in/obiefuna"
+           aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+        <a href="mailto:obiefunaprecious18@gmail.com"
+           aria-label="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
     </div>
+  </footer>
 
+  <script>
+    // Mobile navigation menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-  </section>
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>📧 Email: <a href="mailto:obiefunaprecious18@gmail.com">obiefunaprecious18@gmail.com</a></p>
-    <p>🔗 LinkedIn: <a href="https://linkedin.com/in/obiefuna" target="_blank">linkedin.com/in/obiefuna</a></p>
-  </section>
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Close navigation menu' : 'Open navigation menu'
+      );
+
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    // Close mobile menu after selecting a section
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation menu');
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    // Reveal sections as they enter the screen
+    const revealItems = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+
+    // Highlight the active navigation link
+    const pageSections = document.querySelectorAll('main section[id]');
+    const pageLinks = document.querySelectorAll('.nav-links a');
+
+    if ('IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            pageLinks.forEach(link => {
+              link.classList.toggle(
+                'active',
+                link.getAttribute('href') === '#' + entry.target.id
+              );
+            });
+          }
+        });
+      }, { rootMargin: '-25% 0px -60% 0px' });
+
+      pageSections.forEach(section => sectionObserver.observe(section));
+    }
+
+    // Keep the footer year current
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
-
-
